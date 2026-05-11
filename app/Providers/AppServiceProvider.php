@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Providers;
+
+use App\Models\Team;
+use App\Models\Game;
+use App\Policies\TeamPolicy;
+use App\Policies\GamePolicy;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\ServiceProvider;
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function register(): void
+    {
+        //
+    }
+
+    public function boot(): void
+    {
+        Gate::policy(Team::class, TeamPolicy::class);
+        Gate::policy(Game::class, GamePolicy::class);
+    }
+}
